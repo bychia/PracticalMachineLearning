@@ -133,6 +133,14 @@ CMRPart <- confusionMatrix(predictionRPart, myTesting$classe)
 CMRPart$overall[1]
 ```
 
+```{r predictionSampleError, echo=FALSE}
+CMRPart[3]
+```
+
+The out sample error rate from rpart model is: `r 1-CMRPart$overall[1]`.
+This out sample error is quite high. And we will not use this predictive model. 
+
+
 ### Using random forest algorithm for prediction
 
 ```{r prediction2}
@@ -145,6 +153,13 @@ CMRF <- confusionMatrix(predictionsRF, myTesting$classe)
 # Accuracy
 CMRF$overall[1]
 ```
+
+```{r prediction2SampleError, echo=FALSE}
+CMRF[3]
+```
+
+The out sample error rate from rpart model is: `r 1-CMRF$overall[1]`.
+This out sample error is very low. And we will use random forest as our predictive model. 
 
 ### Generating Files to submit as answers for the Assignment:
 
@@ -168,7 +183,7 @@ answers
 
 # Annex
 ### RPart Model Results
-```{r}
+```{r echo=FALSE}
 CMRPart
 ```
 
@@ -178,7 +193,7 @@ fancyRpartPlot(modFitRPart$finalModel)
 ```
 
 ### Random Forest Model Results
-```{r}
+```{r echo=FALSE}
 CMRF
 ```
 
