@@ -68,15 +68,17 @@ predictionRPart <- predict(modFitRPart, myTesting)
 CMRPart <- confusionMatrix(predictionRPart, myTesting$classe)
 # Accuracy
 CMRPart$overall[1]
+CMRPart[3]
 
 # Using ML algorithms for prediction: Random Forests
 modFitRF <- randomForest(classe ~. , data=myTraining)
 # Prediction on myTesting dataset
-predictionsRF <- predict(modFitRF, myTesting, type = "class")
+predictionsRF <- predict(modFitRF, training, type = "class")
 # ConfusionMatrix
-CMRF <- confusionMatrix(predictionsRF, myTesting$classe)
+CMRF <- confusionMatrix(predictionsRF, training$classe)
 # Accuracy
 CMRF$overall[1]
+CMRF[3]
 
 # Function to generate files with predictions to submit for assignment:
 pml_write_files = function(x){
